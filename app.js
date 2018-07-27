@@ -1,19 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = parseInt(process.env.PORT || 9000)
-
-
-// ID,First Name,Last Name,Home Town
-// 1,Alice,Zephyr,Seattle
-// 2,Bob,Yellow,Vancouver
-// 3,Claire,Xylitol,Toledo
-// 4,Daniel,Winston,Akron
-// 5,Edina,Veritas,Wichita
-
+const port = parseInt(process.env.PORT || 9000);
 
 var data = [
-
     {
         "ID":1,
         "First Name":"Alice",
@@ -47,9 +37,7 @@ var data = [
 ];
 
 function findByID(id){
-    var retval;
-    data.forEach( c => {if (c["ID"] == id) {retval = c}})
-    return retval;
+    return data.filter( s => s["ID"] == id)[0];
 }
 
 app.use(cors());
@@ -61,11 +49,10 @@ app.get("/", (request,response) => {
 
 app.get("/:id", (request, response) => {
     let student = findByID(request.params.id);
-    response.json( 
-        student 
-        ? {data: student} 
-        : {error: {"message":"No record found!"} }
-    );
+    
+    student 
+    ? response.json( {data: student} )
+    : response.status(404).json( {error: {"message":"No record found!"} });
 });
 
-app.listen(port)
+app.listen(port);
