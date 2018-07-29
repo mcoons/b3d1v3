@@ -5,39 +5,39 @@ const port = parseInt(process.env.PORT || 9000);
 
 var data = [
     {
-        "ID":1,
-        "First Name":"Alice",
-        "Last Name":"Zephyr",
-        "Home Town":"Seattle"
+        id:1,
+        firstName:"Alice",
+        lastName:"Zephyr",
+        homeTown:"Seattle"
     },
     {
-        "ID":2,
-        "First Name":"Bob",
-        "Last Name":"Yellow",
-        "Home Town":"Vancouver"
+        id:2,
+        firstName:"Bob",
+        lastName:"Yellow",
+        homeTown:"Vancouver"
     },
     {
-        "ID":3,
-        "First Name":"Claire",
-        "Last Name":"Xylitol",
-        "Home Town":"Toledo"
+        id:3,
+        firstName:"Claire",
+        lastName:"Xylitol",
+        homeTown:"Toledo"
     },
     {
-        "ID":4,
-        "First Name":"Daniel",
-        "Last Name":"Winston",
-        "Home Town":"Akron"
+        id:4,
+        firstName:"Daniel",
+        lastName:"Winston",
+        homeTown:"Akron"
     },
     {
-        "ID":5,
-        "First Name":"Edina",
-        "Last Name":"Veritas",
-        "Home Town":"Wichita"
+        id:5,
+        firstName:"Edina",
+        lastName:"Veritas",
+        homeTown:"Wichita"
     }
 ];
 
 function findByID(id){
-    return data.filter( s => s["ID"] == id)[0];
+    return data.filter( s => s[id] == id)[0];
 }
 
 app.use(cors());
